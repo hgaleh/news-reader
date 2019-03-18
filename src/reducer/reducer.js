@@ -4,7 +4,7 @@ const initState = {
 	newsList: [],
 	srcShow: true,
 	newsShow: false,
-	selectedSource: undefined
+	selectedSource: undefined,
 }
 
 const appReducer = (prevState =  initState, action) => {
@@ -12,9 +12,13 @@ const appReducer = (prevState =  initState, action) => {
 		case actionTypes.sourceChange:
 			return Object.assign({}, prevState, {selectedSource: action.sourceId});
 		case actionTypes.sourceFetchEnd:
-			return Object.assign({}, prevState, {sourceList: action.sourceList, newsList: []});
+			return Object.assign({}, prevState, {sourceList: action.sourceList, newsList: [], srcShow: true});
 		case actionTypes.newsFetchEnd:
-			return Object.assign({}, prevState, {newsList: action.newsList});
+			return Object.assign({}, prevState, {newsList: action.newsList, newsShow: true});
+		case actionTypes.sourceFetchStart:
+			return Object.assign({}, prevState, {srcShow: false});
+		case actionTypes.newsFetchStart:
+			return Object.assign({}, prevState, {newsShow: false});
 		default:
 			return prevState;
 	}

@@ -35,7 +35,7 @@ export const sourceFetchStart = () => dispatch => {
 
 export const newsFetchStart = (sourceId) => dispatch => {
 	dispatch({type: actionTypes.newsFetchStart});
-	fetch(`v2/top-headlines?sources=${sourceId}&apiKey=99dbfe8e8a99490bb69dff1834b644a0`)
+	fetch(`/v2/top-headlines?sources=${sourceId}&apiKey=99dbfe8e8a99490bb69dff1834b644a0`)
 	.then(response => response.json())
 	.then(json => dispatch(newsFetchEnd(json.articles)))
 }

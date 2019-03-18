@@ -11,7 +11,10 @@ class SourceList extends Component {
 
 	makeList(sourceList, click, selectedSource) {
 		sourceList.map(listItem => {
-			return <SourceListItem item={listItem} click={() => {}} isDefault={true}></SourceListItem>
+			return <SourceListItem 
+				item={listItem} click={() => {click(listItem.id)}} 
+				isSelected={listItem.id === selectedSource}>
+			</SourceListItem>
 		});
 	}
 

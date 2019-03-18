@@ -5,14 +5,15 @@ class SourceListItem extends Component {
 	static propTypes = {
 		item: PropTypes.object.isRequired,
 		click: PropTypes.func.isRequired,
-		isDefault: PropTypes.bool.isRequired
+		isSelected: PropTypes.bool
 	}
 
 	render() {
-		const {item, click, isDefault} = this.props;
+		const {item, click, isSelected} = this.props;
 		return (
-			<div>
-				ListItem
+			<div style={isSelected? 'border: solid': 'border: none'}>
+				<b>{item.name}</b>
+				<i>{item.description}</i>
 			</div>
 		);
 	}
