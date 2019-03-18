@@ -9,12 +9,12 @@ import {loadFrom, saveTo} from './persistLocalStorage';
 import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 
-const middleware = [ thunk, loadFrom() ]
+const middleware = [ thunk ]
 if (process.env.NODE_ENV !== 'production') {
   middleware.push(createLogger());
 }
 
-const store = createStore(appReducer, middleware);
+const store = createStore(appReducer, loadFrom(), applyMiddleware(thunk));
 store.subscribe(() => {
 	saveTo(store.getState());
 });

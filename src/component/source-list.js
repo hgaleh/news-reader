@@ -4,7 +4,7 @@ import SourceListItem from './source-list-item';
 
 class SourceList extends Component {
 	static propTypes = {
-		selectedSource: PropTypes.string.isRequired, 
+		selectedSource: PropTypes.string, 
 		sourceList: PropTypes.array.isRequired,
 		click: PropTypes.func.isRequired
 	}
