@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import buttonShowHide from './reducer/show-hide';
+import appReducer from './reducer/reducer';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import {loadFrom, saveTo} from './persistLocalStorage';
@@ -15,7 +15,7 @@ if (process.env.NODE_ENV !== 'production') {
   middleware.push(createLogger());
 }
 
-const store = createStore(buttonShowHide, middleware);
+const store = createStore(appReducer, middleware);
 store.subscribe(() => {
 	saveTo(store.getState());
 });
