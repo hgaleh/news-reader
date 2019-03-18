@@ -26,5 +26,6 @@
   ],
   "devDependencies": {
     "redux-devtools": "^3.5.0"
-  }
+  },
+  "proxy": "https://newsapi.org"
 }
