@@ -4,17 +4,17 @@ const initState = {
 	newsList: [],
 	srcShow: true,
 	newsShow: false,
+	selectedSource: undefined
 }
 
 const appReducer = (prevState =  initState, action) => {
 	switch(action.type) {
-		case actionTypes.sourceListShow:
-			return Object.assign({}, prevState, {srcShow: true, newsShow: false});
-		case actionTypes.updateSourceList:
-			
-		case actionTypes.newsListShow:
-			return Object.assign({}, prevState, {srcShow: false, newsShow: true});
-		case actionTypes.updateNewsList:
+		case actionTypes.sourceChange:
+			return Object.assign({}, prevState, {selectedSource: action.sourceId});
+		case actionTypes.sourceFetchEnd:
+			return Object.assign({}, prevState, {sourceList: action.sourceList, newsList: []});
+		case actionTypes.newsFetchEnd:
+			return Object.assign({}, prevState, {newsList: action.newsList});
 		default:
 			return prevState;
 	}

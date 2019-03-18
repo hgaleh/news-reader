@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {selectSource, updateSourceList} from './action/action';
-import {SourceList} from './component/source-list';
+import SourceList from './component/source-list';
 import { connect } from 'react-redux';
 
 class App extends Component {
 	static propTypes = {
-		selectedSource: PropTypes.string.isRequired,
-		sourceList: PropTypes.array.isRequired,
-		showNewsList: PropTypes.bool.isRequired,
-		newsList: PropTypes.array.isRequired,
+		selectedSource: PropTypes.string,
+		sourceList: PropTypes.array,
+		showNewsList: PropTypes.bool,
+		newsList: PropTypes.array,
 		dispatch: PropTypes.func.isRequired,
 	}
 
 	render() {
 		const {selectedSource, sourceList, showNewsList, newsList, dispatch} = this.props;
+
 		return (
 			<div>
 				<SourceList 
@@ -27,4 +27,18 @@ class App extends Component {
 	}
 }
 
-export default connect()(App);
+const mapStateToProps = state => ({
+	selectedSource: state.selectedSource,
+	sourceList: state.sourceList,
+	showNewsList: state.newsShow,
+	newsList: state.newsList
+});
+
+const mapDispatchToProps = dispatch => ({
+	dispatch
+});
+
+export default connect(
+	mapStateToProps, 
+	mapDispatchToProps
+)(App);
