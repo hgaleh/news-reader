@@ -1,0 +1,1 @@
+<a target="_blank" href="http://www.google.com">external link</a>
