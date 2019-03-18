@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import SourceListItem from './source-list-item';
-
+import './source-list.css';
 class SourceList extends Component {
 	static propTypes = {
 		selectedSource: PropTypes.string, 
@@ -10,19 +10,20 @@ class SourceList extends Component {
 	}
 
 	makeList(sourceList, click, selectedSource) {
-		sourceList.map(listItem => {
-			return <SourceListItem 
+		return sourceList.map(listItem => {
+			return (<SourceListItem 
 				item={listItem} click={() => {click(listItem.id)}} 
 				isSelected={listItem.id === selectedSource}>
-			</SourceListItem>
+			</SourceListItem>)
 		});
 	}
 
 	render() {
 		const {selectedSource, sourceList, click} = this.props;
+		const listItems = this.makeList(sourceList, click, selectedSource)
 		return (
-			<div>
-				{this.makeList(sourceList, click, selectedSource)}
+			<div className="scroll">
+				{listItems}
 			</div>
 		);
 	}

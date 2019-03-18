@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import './source-list-item.css';
 
 class SourceListItem extends Component {
 	static propTypes = {
@@ -11,9 +12,10 @@ class SourceListItem extends Component {
 	render() {
 		const {item, click, isSelected} = this.props;
 		return (
-			<div style={isSelected? 'border: solid': 'border: none'}>
-				<b>{item.name}</b>
-				<i>{item.description}</i>
+			<div style={{border: isSelected? 'solid': 'none'}} onClick={click}>
+				<div className="tooltip"> <div>{item.name}</div>
+					<i className="tooltiptext">{item.description}</i>
+				</div>
 			</div>
 		);
 	}
