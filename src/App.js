@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {selectSource, updateSourceList} from './action/action';
 import {SourceList} from './component/source-list';
-import './App.css';
+import { connect } from 'react-redux';
 
 class App extends Component {
 	static propTypes = {
@@ -27,4 +27,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default connect()(App);
