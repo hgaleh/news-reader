@@ -42,6 +42,9 @@ class App extends Component {
 					<NewsList newsList={newsList}>
 					</NewsList>
 				}
+				{!showNewsList &&
+					<b>Loading News...</b>
+				}
 				
 			</div>
 		);

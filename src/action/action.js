@@ -37,7 +37,7 @@ export const sourceFetchStart = () => dispatch => {
 	.catch(e => {
 		dispatch(sourceFetchFail());
 	})
-	.then(response => sourceListResponse)
+	.then(response => response.json())
 	.then(json => {
 		if(json.status == 'error') {
 			return dispatch(sourceFetchFail());
@@ -49,7 +49,7 @@ export const sourceFetchStart = () => dispatch => {
 export const newsFetchStart = (sourceId) => dispatch => {
 	dispatch({type: actionTypes.newsFetchStart});
 	return fetch(`/v2/top-headlines?sources=${sourceId}&apiKey=99dbfe8e8a99490bb69dff1834b644a0`)
-	.then(response => newsList)
+	.then(response => response.json())
 	.then(json => {dispatch(newsFetchEnd(json.articles))});
 }
 
