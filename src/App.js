@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import SourceList from './component/source-list';
 import { connect } from 'react-redux';
 import {sourceChange, sourceFetchStart} from './action/action'
+import NewsList from './component/news-list';
 
 class App extends Component {
 	static propTypes = {
@@ -36,6 +37,12 @@ class App extends Component {
 				{!showSourceList &&
 					<b>Loading News Sources...</b>
 				}
+
+				{showNewsList &&
+					<NewsList newsList={newsList}>
+					</NewsList>
+				}
+				
 			</div>
 		);
 	}

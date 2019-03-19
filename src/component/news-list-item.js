@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 
 class NewsListItem extends Component {
 	static propTypes = {
-		href: PropTypes.string.isRequired, 
-		title: PropTypes.array.isRequired,
+		item: PropTypes.object.isRequired
 	}
 
 	render() {
-		const {href, title} = this.props;
+		const {item} = this.props;
 		return (
 			<div>
-				<a target="_blank" href={href} onClick={click()}>{title}</a>
+				<a target="_blank" href={item.url}>{item.title}</a>
+				<img src={item.urlToImage}></img>
+				<div>{item.description}</div>
 			</div>
 		);
 	}

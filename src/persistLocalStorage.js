@@ -13,7 +13,14 @@ export const loadFrom = () => {
 		if (persisted === null) {
 			return undefined;
 		}
-		return JSON.parse(persisted);
+		const json = JSON.parse(persisted);
+		if((json.sourceList === undefined) || (json.sourceList === null)) {
+			json.srcShow = false;
+		}
+		if((json.newsList === undefined) || (json.newsList === null)) {
+			json.newsShow = false;
+		}
+		return json; 
 	} catch(err) {
 		return undefined;
 	}

@@ -2,7 +2,7 @@ import {actionTypes} from '../action/action'
 const initState = {
 	sourceList: [],
 	newsList: [],
-	srcShow: true,
+	srcShow: false,
 	newsShow: false,
 	selectedSource: undefined,
 }
