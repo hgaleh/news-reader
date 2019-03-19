@@ -20,7 +20,7 @@ class NewsList extends Component {
 		const {newsList} = this.props;
 		const listItems = this.makeList(newsList)
 		return (
-			<div className="scroll-news-source">
+			<div>
 				{listItems}
 			</div>
 		);

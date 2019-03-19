@@ -13,9 +13,7 @@ class SourceListItem extends Component {
 		const {item, click, isSelected} = this.props;
 		return (
 			<div style={{border: isSelected? 'solid': 'none'}} onClick={click}>
-				<div className="tooltip"> <div>{item.name}</div>
-					<i className="tooltiptext">{item.description}</i>
-				</div>
+				<div>{item.name}</div>
 			</div>
 		);
 	}
