@@ -22,7 +22,7 @@ class SourceList extends Component {
 		const {selectedSource, sourceList, click} = this.props;
 		const listItems = this.makeList(sourceList, click, selectedSource)
 		return (
-			<div className="scroll">
+			<div className="scroll-source-list">
 				{listItems}
 			</div>
 		);

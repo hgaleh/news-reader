@@ -1,6 +1,6 @@
-.scroll {
+.scroll-source-list {
 	overflow-y: scroll;
 	height: 100vh;
-	width: fit-content;
-	position: fixed;
+	width: 25rem;
+	float: left;
 }
