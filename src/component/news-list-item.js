@@ -9,12 +9,12 @@ class NewsListItem extends Component {
 	render() {
 		const {item} = this.props;
 		return (
-			<div className="card" style={{width:'250px', display: 'inline-block', marginRight: '10px'}}>
+			<div className="card" style={{width:'250px', display: 'inline-block', marginRight: '10px', height: '20rem'}}>
 				<img className="card-img-top" src={item.urlToImage} alt={item.title} style={{width:'100%'}}/>
 				<div className="card-body">
 					<h4 className="card-title">{item.author}</h4>
 					<p className="card-text">{item.description}</p>
-					<a href={item.url} target="_blank" class="btn btn-primary">Open</a>
+					<a href={item.url} target="_blank" class="btn btn-primary" styel={{position: 'absolute', bottom: '10px'}}>Open</a>
 				</div>
 			</div>
 		);
