@@ -31,7 +31,7 @@ export const newsFetchEnd = (newsList) => ({
 	newsList
 })
 
-export const sourceFetchStart = () => dispatch => {
+export const sourceFetchStart = (selectedSource) => dispatch => {
 	dispatch({type: actionTypes.sourceFetchStart});
 	return fetch("/v2/sources?apiKey=99dbfe8e8a99490bb69dff1834b644a0")
 	.catch(e => {

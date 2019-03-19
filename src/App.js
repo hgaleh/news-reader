@@ -30,6 +30,7 @@ class App extends Component {
 			<div className="container-fluid">
 				<div className="row">
 					<div className="col-md-3">
+						<button className="btn btn-primary" onClick={() => dispatch(sourceFetchStart())}>Refresh</button>
 						{showSourceList &&
 							<SourceList 
 								selectedSource={selectedSource} 
