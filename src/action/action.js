@@ -33,7 +33,7 @@ export const newsFetchEnd = (newsList) => ({
 
 export const sourceFetchStart = (selectedSource) => dispatch => {
 	dispatch({type: actionTypes.sourceFetchStart});
-	return fetch("/v2/sources?apiKey=99dbfe8e8a99490bb69dff1834b644a0")
+	return fetch("https://newsapi.org/v2/sources?apiKey=99dbfe8e8a99490bb69dff1834b644a0")
 	.catch(e => {
 		dispatch(sourceFetchFail());
 	})
@@ -48,7 +48,7 @@ export const sourceFetchStart = (selectedSource) => dispatch => {
 
 export const newsFetchStart = (sourceId) => dispatch => {
 	dispatch({type: actionTypes.newsFetchStart});
-	return fetch(`/v2/top-headlines?sources=${sourceId}&apiKey=99dbfe8e8a99490bb69dff1834b644a0`)
+	return fetch(`https://newsapi.org/v2/top-headlines?sources=${sourceId}&apiKey=99dbfe8e8a99490bb69dff1834b644a0`)
 	.then(response => response.json())
 	.then(json => {dispatch(newsFetchEnd(json.articles))});
 }
