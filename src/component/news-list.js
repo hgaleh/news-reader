@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import './news-list.css';
 import NewsListItem from './news-list-item';
 
 class NewsList extends Component {

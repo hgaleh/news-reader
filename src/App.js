@@ -5,8 +5,18 @@ import { connect } from 'react-redux';
 import {sourceChange, sourceFetchStart, newsFetchStart} from './action/action'
 import NewsList from './component/news-list';
 import './style.css';
+import { Spinner } from './component/spinnes';
 
 class App extends Component {
+	constructor(props) {
+		super(props);
+		this.openNav = this.openNav.bind(this);
+		this.closeNav = this.closeNav.bind(this);
+		this.sourceListClickHandler = this.sourceListClickHandler.bind(this);
+		this.state = {
+			sadeNavWidth: '0'
+		}
+	}
 	static propTypes = {
 		selectedSource: PropTypes.string,
 		sourceList: PropTypes.array,
@@ -22,32 +32,43 @@ class App extends Component {
 			dispatch(sourceFetchStart());
 		}
 	}
-
-	componentDidUpdate(prevProps) {
-	}
 	
+	openNav() {
+		this.setState({
+			sadeNavWidth: '100%'
+		})
+	}
+
+	closeNav() {
+		this.setState({
+			sadeNavWidth: '0'
+		})
+		this.forceUpdate();
+	}
+
+	sourceListClickHandler(sourceId) {
+		this.closeNav();
+		this.props.dispatch(sourceChange(sourceId, this.props.state[sourceId]?false:true));
+	}
+
 	render() {
-		const {selectedSource, sourceList, showNewsList, newsList, dispatch, showSourceList, state} = this.props;
+		const {selectedSource, sourceList, showNewsList, newsList, dispatch, showSourceList} = this.props;
 		return (
 			<div className="container">
 				<div className="news-row">
-					<div className="source-list">
+					<span style={{fontSize: '30px', cursor:'pointer'}} className="side-nav-button" onClick={this.openNav}>News Sources</span>
+					<div className="sidenav" style={{width: this.state.sadeNavWidth}}>
+						<a className="closebtn" onClick={this.closeNav}>&times;</a>
 						<button className="btn-update" onClick={() => dispatch(sourceFetchStart())}>Update Source List</button>
 						{showSourceList &&
 							<SourceList 
 								selectedSource={selectedSource} 
 								sourceList={sourceList} 
-								click={sourceId => dispatch(sourceChange(sourceId, state[sourceId]?false:true))}
+								click={ this.sourceListClickHandler }
 							></SourceList>
 						}
 						{!showSourceList &&
-							<div className="wrap">
-								<div className="spinner-wrap">
-									<div className="spinner">
-										<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-									</div>
-								</div>
-							</div>
+							<Spinner/>
 						}
 					</div>
 					<div className="news-list">
@@ -57,13 +78,7 @@ class App extends Component {
 							</NewsList>
 						}
 						{!showNewsList &&
-							<div className="wrap">
-								<div className="spinner-wrap">
-									<div className="spinner">
-										<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-									</div>
-								</div>
-							</div>
+							<Spinner/>
 						}
 					</div>
 				</div>
