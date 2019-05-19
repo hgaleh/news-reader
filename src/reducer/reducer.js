@@ -1,7 +1,6 @@
 import {actionTypes} from '../action/action'
 const initState = {
 	sourceList: [],
-	newsList: [],
 	srcShow: false,
 	newsShow: false,
 	selectedSource: undefined,
@@ -12,9 +11,9 @@ const appReducer = (prevState =  initState, action) => {
 		case actionTypes.sourceChange:
 			return Object.assign({}, prevState, {selectedSource: action.sourceId});
 		case actionTypes.sourceFetchEnd:
-			return Object.assign({}, prevState, {sourceList: action.sourceList, newsList: [], srcShow: true});
+			return Object.assign({}, prevState, {sourceList: action.sourceList, srcShow: true});
 		case actionTypes.newsFetchEnd:
-			return Object.assign({}, prevState, {newsList: action.newsList, newsShow: true});
+			return Object.assign({}, prevState, {[action.sourceId]: action.newsList, newsShow: true});
 		case actionTypes.sourceFetchStart:
 			return Object.assign({}, prevState, {srcShow: false});
 		case actionTypes.newsFetchStart:
