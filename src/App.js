@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import {sourceChange, sourceFetchStart, newsFetchStart} from './action/action'
 import NewsList from './component/news-list';
 import './style.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
 	static propTypes = {
@@ -30,10 +29,10 @@ class App extends Component {
 	render() {
 		const {selectedSource, sourceList, showNewsList, newsList, dispatch, showSourceList, state} = this.props;
 		return (
-			<div className="container-fluid">
-				<div className="row">
-					<div className="col-md-3">
-						<button className="btn btn-primary" onClick={() => dispatch(sourceFetchStart())}>Update Source List</button>
+			<div className="container">
+				<div className="news-row">
+					<div className="source-list">
+						<button className="btn-update" onClick={() => dispatch(sourceFetchStart())}>Update Source List</button>
 						{showSourceList &&
 							<SourceList 
 								selectedSource={selectedSource} 
@@ -42,17 +41,29 @@ class App extends Component {
 							></SourceList>
 						}
 						{!showSourceList &&
-							<b>Loading News Sources...</b>
+							<div className="wrap">
+								<div className="spinner-wrap">
+									<div className="spinner">
+										<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+									</div>
+								</div>
+							</div>
 						}
 					</div>
-					<div className="col-md-9">
-						<button className="btn btn-primary" onClick={() => dispatch(newsFetchStart(selectedSource))}>Update News List</button>
+					<div className="news-list">
+						<button className="btn-update" onClick={() => dispatch(newsFetchStart(selectedSource))}>Update News List</button>
 						{showNewsList &&
 							<NewsList newsList={newsList}>
 							</NewsList>
 						}
 						{!showNewsList &&
-							<b>Loading News...</b>
+							<div className="wrap">
+								<div className="spinner-wrap">
+									<div className="spinner">
+										<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+									</div>
+								</div>
+							</div>
 						}
 					</div>
 				</div>
