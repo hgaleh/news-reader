@@ -1,5 +1,4 @@
-Api Key: 99dbfe8e8a99490bb69dff1834b644a0
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Check it online [here](https://news-reader-5b052.firebaseapp.com/)
 
 ### Project Description
 This project uses https://newsapi.org to fetch news sources and their corresponding news list.
