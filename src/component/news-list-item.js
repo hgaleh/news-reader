@@ -16,7 +16,7 @@ class NewsListItem extends Component {
 				{/* <LazyImage src={item.urlToImage} alt={item.title} ></LazyImage> */}
 				<div className="card-body">
 					<h4 className="card-title" style={{whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden'}}>{item.author}</h4>
-					<p className="card-text" style={{overflow: 'hidden', display: '-webkit-box', webkitLineClamp: '4', webkitBoxOrient: 'vertical'}}>{item.description}</p>
+					<p className="card-text" style={{overflow: 'hidden', display: '-webkit-box', webkitLineClamp: '2', webkitBoxOrient: 'vertical'}}>{item.description}</p>
 					<a href={item.url} target="_blank" className="btn-update">Open</a>
 				</div>
 			</div>
